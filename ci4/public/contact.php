@@ -23,7 +23,7 @@ if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "INSERT INTO pgjauod_myguests(ANSname, ANSsubject, email, ANSmessage)
+$sql = "INSERT INTO pgjauod_myguests(Aname, Asubject, email, Amessage)
 VALUES ('$name', '$subject', '$email', '$message')";
 
 if ($conn->query($sql) === TRUE) {
