@@ -1,4 +1,4 @@
-$("#contact-form").submit(function (event) {
+$("#contactform").submit(function (event) {
     event.preventDefault();
     var name = $("input#name").val();
     var email = $("input#email").val();
