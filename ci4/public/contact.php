@@ -4,6 +4,7 @@ $servername = "192.168.150.213";
 $username = "webprogss211";
 $password = "fancyR!ce36";
 $dbname = "webprogss211";
+
 // Connect to the database
 $conn = mysqli_connect($servername, $username, $password, $dbname);
 
@@ -19,8 +20,7 @@ if (isset($_POST['submit'])) {
     $subject = $_POST['subject'];
     $message = $_POST['message'];
 
-    $sql = "INSERT INTO pgjauod_myguests(Aname, email, Asubject, Amessage)
-            VALUES ('$name', '$email', '$subject', '$message')";
+    $sql = "INSERT INTO pgjauod_myguests (Aname, email, Asubject, Amessage) VALUES ('$name', '$email', '$subject', '$message')";
 
     if (mysqli_query($conn, $sql)) {
         echo "Message sent successfully!";

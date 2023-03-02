@@ -369,8 +369,7 @@
                                 </button>
                             </div>
                             <div class="guest-btn" style="float: right;">
-                                <form action="guestlist.php" method="post"></form>
-                                <button type="submit" name="guestlist" class="main-btn">
+                                <button type="button" name="guestlist" class="main-btn" action="guestlist.php">
                                     <span class="btn-text, btn-icon">Guest List</span>
                                 </button>
                             </div>
@@ -399,6 +398,32 @@
     <div class="theme-btn">
         <i class="fas fa-adjust"></i>
     </div>
+      <!-- jQuery -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function() {
+          $('#contact-form').submit(function(event) {
+            event.preventDefault(); // prevent the form from submitting normally
+    
+            var form = $(this);
+            var url = form.attr('action');
+            var formData = form.serialize();
+    
+            $.ajax({
+              type: 'POST',
+              url: 'contact.php', // replace with your PHP file path
+              data: formData,
+              success: function(response) {
+                $('#contact-form')[0].reset(); // reset the form
+                alert(response); // display success message
+              },
+              error: function(xhr, status, error) {
+                console.log(xhr.responseText); // log the error message
+              }
+            });
+          });
+        });
+      </script>
     <script src="app.js"></script>
 </body>
 </html>
