@@ -352,6 +352,7 @@
                         </div>
                     </div>
                     <div class="right-contact">
+                        <form id="contact-form" method="post" action="">
                             <div class="input-control i-c-2">
                                 <input type="text" required name="name" placeholder="YOUR NAME">
                                 <input type="email" required name="email" placeholder="YOUR EMAIL">
@@ -367,12 +368,12 @@
                                     <span class="btn-text, btn-icon">Submit</span>
                                 </button>
                             </div>
-                                <button type="button" name="guestlist" class="main-btn" style="float: right;">
-                                    <a href="guestlist.php" class="main-btn"></a>
-                                    <span class="btn-text, btn-icon">Guest List</span>
-                                </button>
-                            
                         </form>
+                        <div class="submit-btn" style="float: right;">
+                            <a href="guestlist.php" class="main-btn">
+                                <span class="btn-text, btn-icon">Guest List</span>
+                            </a>
+                        </div>
                     </div>                    
                 </div>
             </div>
@@ -421,7 +422,7 @@
             });
           });
         });
-      </script>
+    </script>
     <script src="app.js"></script>
 </body>
 </html>

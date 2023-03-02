@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
     $subject = $_POST['subject'];
     $message = $_POST['message'];
 
-    $sql = "INSERT INTO pgjauod_myguests (Aname, email, Asubject, Amessage) VALUES ('$name', '$email', '$subject', '$message')";
+    $sql = "INSERT INTO pgjauod_myguests(Aname, email, Asubject, Amessage) VALUES ('$name', '$email', '$subject', '$message')";
 
     if (mysqli_query($conn, $sql)) {
         echo "Message sent successfully!";
