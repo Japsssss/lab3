@@ -36,7 +36,7 @@
 				}
 
 				// Fetch data from database
-				$sql = "SELECT * FROM pgjaoud_myguests";
+				$sql = "SELECT * FROM pgjauod_myguests";
 				$result = mysqli_query($conn, $sql);
 
 				if (mysqli_num_rows($result) > 0) {
