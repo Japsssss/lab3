@@ -1,34 +1,43 @@
 <?php
-// Set up database connection parameters
+if(empty($_POST['name']) || empty($_POST['subject']) || empty($_POST['message']) || !filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
+  error_log('Error: Invalid form data');
+  echo json_encode(array("status" => "error"));
+  exit();
+}
+
+$name = strip_tags(htmlspecialchars($_POST['name']));
+$email = strip_tags(htmlspecialchars($_POST['email']));
+$subject = strip_tags(htmlspecialchars($_POST['subject']));
+$message = strip_tags(htmlspecialchars($_POST['message']));
+
 $servername = "192.168.150.213";
 $username = "webprogss211";
 $password = "fancyR!ce36";
 $dbname = "webprogss211";
 
-// Connect to the database
-$conn = mysqli_connect($servername, $username, $password, $dbname);
-
-// Check for errors
-if (!$conn) {
-    die("Connection failed: " . mysqli_connect_error());
+// Create connection
+$conn = new mysqli($servername, $username, $password, $dbname);
+// Check connection
+if ($conn->connect_error) {
+  error_log('Error: Connection failed - ' . $conn->connect_error);
+  die("Connection failed: " . $conn->connect_error);
 }
 
-// If the form has been submitted, insert the data into the database
-if (isset($_POST['submit'])) {
-    $name = $_POST['name'];
-    $email = $_POST['email'];
-    $subject = $_POST['subject'];
-    $message = $_POST['message'];
+$sql = "INSERT INTO pgjauod_myguests(ANSname, ANSsubject, email, ANSmessage)
+VALUES ('$name', '$subject', '$email', '$message')";
 
-    $sql = "INSERT INTO pgjauod_myguests(Aname, email, Asubject, Amessage) VALUES ('$name', '$email', '$subject', '$message')";
-
-    if (mysqli_query($conn, $sql)) {
-        echo "Message sent successfully!";
-    } else {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
-    }
+if ($conn->query($sql) === TRUE) {
+  echo json_encode(array("status" => "success"));
+} else {
+  error_log('Error: ' . $sql . ' - ' . $conn->error);
+  echo json_encode(array("status" => "error"));
 }
 
-// Close the database connection
-mysqli_close($conn);
+$conn->close();
+
+
+ini_set('display_errors', 1);
+ini_set('display_startup_errors', 1);
+error_reporting(E_ALL);
+
 ?>
