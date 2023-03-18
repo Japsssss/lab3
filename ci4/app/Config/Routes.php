@@ -30,8 +30,8 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-use App\public\guestlist as guestslist;
-use App\public\contact as contacts;
+use App\Views\home\guestlist as guestslist;
+use App\Views\home\contact as contacts;
 use App\Controllers\Guest;
 use App\Controllers\News;
 use App\Controllers\Pages;
