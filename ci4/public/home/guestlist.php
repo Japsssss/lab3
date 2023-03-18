@@ -67,7 +67,7 @@
 				?>
 			</tbody>
 		</table>
-		<a href="home.php" class="btn btn-primary">Go back to Contact Form</a>
+		<a href="index.php" class="btn btn-primary">Go back to Contact Form</a>
 	</div>
 </body>
 </html>
