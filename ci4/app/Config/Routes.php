@@ -46,10 +46,10 @@ $routes->get('(:segment)', [Pages::class, 'view']);
 
 
 $routes->get('/home', 'Home::index');
-use App\public\home\guestlist as guestslist;
+use App\public\home\guestlist as guestslists;
 use App\public\home\contact as contacts;
-$routes->match(['get', 'post'], 'contact', [guestslist::class, 'create']);
-$routes->get('contact/(:segment)', [guestslist::class, 'view']);
+$routes->match(['get', 'post'], 'contact', [guestslists::class, 'create']);
+$routes->get('contact/(:segment)', [guestslists::class, 'view']);
 $routes->match(['get', 'post'], 'contact', [contacts::class, 'create']);
 $routes->get('contact/(:segment)', [contacts::class, 'view']);
 /*
