@@ -30,14 +30,9 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
-$routes->get('/home', 'Home::index');
 use App\Controllers\Guest;
 use App\Controllers\News;
 use App\Controllers\Pages;
-
-$routes->get('/home', 'Home::index');
-use App\public\home\guestlist as guestslist;
-use App\public\home\contact as contacts;
 
 // guest routes
 $routes->match(['get', 'post'], 'guest/create', [Guest::class, 'create']);
@@ -49,6 +44,10 @@ $routes->get('news', [News::class, 'index']);
 $routes->get('pages', [Pages::class, 'index']);
 $routes->get('(:segment)', [Pages::class, 'view']);
 
+
+$routes->get('/home', 'Home::index');
+use App\public\home\guestlist as guestslist;
+use App\public\home\contact as contacts;
 $routes->match(['get', 'post'], 'contact', [guestslist::class, 'create']);
 $routes->get('contact/(:segment)', [guestslist::class, 'view']);
 $routes->match(['get', 'post'], 'contact', [contacts::class, 'create']);
